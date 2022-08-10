@@ -9,6 +9,24 @@
     <script nomodule src="/build/stencil-starter-project-name.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <my-component id='user-set-attr'></my-component>
+    <my-component id='user-set-prop'></my-component>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const userSetAttr = document.querySelector("#user-set-attr");
+        userSetAttr.setAttribute('boolean', '');
+        userSetAttr.setAttribute('string', "my string");
+        userSetAttr.setAttribute("number", "7331")
+
+        console.log(`[user-set-attr]::props: boolean=${userSetAttr.boolean}, string=${userSetAttr.string}, number=${userSetAttr.number}, ${userSetAttr.outerHTML}`);
+
+        const userSetProp = document.querySelector("#user-set-prop");
+        userSetProp.boolean = true;
+        userSetProp.string = "my string";
+        userSetProp.number = 7331;
+
+        console.log(`[user-set-prop]::attrs: boolean=${userSetProp.getAttribute("boolean")}, string=${userSetProp.getAttribute("string")}, number=${userSetProp.getAttribute("number")}, ${userSetProp.outerHTML}`);
+      });
+    </script>
   </body>
 </html>
